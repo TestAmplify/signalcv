@@ -1,6 +1,7 @@
 import { login } from '@/app/login/actions'
 import Link from 'next/link'
 import { PasswordField } from '@/components/password-field'
+import { AnimatedButton } from '@/components/ui/animated-button'
 
 export default function LoginPage() {
   return (
@@ -38,12 +39,9 @@ export default function LoginPage() {
           <PasswordField id="password" name="password" label="Password" />
 
           <div className="space-y-2 pt-2">
-            <button
-              formAction={login}
-              className="flex h-10 w-full items-center justify-center rounded-xl bg-primary text-sm font-semibold text-inverse shadow-sm shadow-black/40 hover:bg-primary/90"
-            >
+            <AnimatedButton formAction={login} className="w-full h-10 text-sm">
               Log in
-            </button>
+            </AnimatedButton>
           </div>
         </form>
 

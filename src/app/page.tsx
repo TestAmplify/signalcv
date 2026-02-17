@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { AnimatedLink } from '@/components/ui/animated-link'
 
 export default function Home() {
   return (
@@ -28,18 +29,12 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/login"
-              className="hidden rounded-full border border-default/60 px-4 py-1.5 text-xs font-medium text-muted hover:border-primary/80 hover:text-primary md:inline-flex"
-            >
+            <AnimatedLink href="/login" variant="ghost" className="hidden md:inline-flex text-xs">
               Log in
-            </Link>
-            <Link
-              href="/signup"
-              className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-inverse shadow-sm shadow-black/40 hover:bg-primary/90"
-            >
+            </AnimatedLink>
+            <AnimatedLink href="/signup" className="text-xs">
               Get started
-            </Link>
+            </AnimatedLink>
           </div>
         </div>
       </header>
@@ -64,12 +59,9 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link
-                href="/signup"
-                className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-inverse shadow-sm shadow-black/40 hover:bg-primary/90"
-              >
+              <AnimatedLink href="/signup" className="text-sm px-5 py-2">
                 Get started
-              </Link>
+              </AnimatedLink>
             </div>
 
             <div className="flex flex-wrap gap-6 text-xs text-muted/80">

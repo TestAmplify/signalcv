@@ -91,3 +91,29 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
+.soft-card {
+  border-radius: var(--radius-xl);
+  background: color-mix(in oklab, var(--bg-surface) 80%, white 0%);
+  border: 1px solid var(--border-default);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+.soft-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+  border-color: color-mix(in oklab, var(--border-strong) 85%, white 0%);
+  background: color-mix(in oklab, var(--bg-surface-elevated) 86%, white 0%);
+}
+
+.tab-pill {
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-muted);
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+.tab-pill-active {
+  background: color-mix(in oklab, var(--bg-surface-elevated) 85%, white 0%);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}

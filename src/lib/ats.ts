@@ -57,3 +57,41 @@ export function computeAtsScore(resumeText: string): AtsResult {
     issues,
   };
 }
+
+export interface AtsSuggestions {
+  suggestions: string[];
+  improvedText: string;
+}
+
+export function autoFixResume(resumeText: string): AtsSuggestions {
+  const suggestions: string[] = [];
+  const text = resumeText.trim();
+
+  const hasEmail = /\S+@\S+\.\S+/.test(text);
+  const hasPhone = /(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}/.test(text);
+  if (!hasEmail || !hasPhone) {
+    suggestions.push('Add a professional email address and phone number at the top.');
+  }
+
+  const lower = text.toLowerCase();
+  const expectedSections = ['summary', 'experience', 'education', 'skills'];
+  const missingSections = expectedSections.filter((s) => !lower.includes(s));
+  if (missingSections.length > 0) {
+    suggestions.push(`Add clear section headers: ${missingSections.join(', ')}.`);
+  }
+
+  const bulletPointCount = (text.match(/(^|\n)(•|\*|-)\s+/g) || []).length;
+  if (bulletPointCount < 5) {
+    suggestions.push('Rewrite responsibilities as short bullet points (•, *, -) instead of long paragraphs.');
+  }
+
+  const numberCount = (text.match(/\d+%|\$\d+|\d+ [a-zA-Z]+/g) || []).length;
+  if (numberCount < 3) {
+    suggestions.push('Add at least 3 quantified achievements using %, $, or concrete numbers.');
+  }
+
+  return {
+    suggestions,
+    improvedText: resumeText,
+  };
+}

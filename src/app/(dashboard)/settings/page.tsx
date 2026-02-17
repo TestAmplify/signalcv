@@ -5,16 +5,22 @@ import { useState, useEffect } from 'react'
 export default function SettingsPage() {
   const [openaiKey, setOpenaiKey] = useState('')
   const [anthropicKey, setAnthropicKey] = useState('')
+  const [geminiKey, setGeminiKey] = useState('')
+  const [deepseekKey, setDeepseekKey] = useState('')
   const [saved, setSaved] = useState(false)
 
   useEffect(() => {
     setOpenaiKey(localStorage.getItem('signalcv_openai_key') || '')
     setAnthropicKey(localStorage.getItem('signalcv_anthropic_key') || '')
+    setGeminiKey(localStorage.getItem('signalcv_gemini_key') || '')
+    setDeepseekKey(localStorage.getItem('signalcv_deepseek_key') || '')
   }, [])
 
   const handleSave = () => {
     localStorage.setItem('signalcv_openai_key', openaiKey)
     localStorage.setItem('signalcv_anthropic_key', anthropicKey)
+    localStorage.setItem('signalcv_gemini_key', geminiKey)
+    localStorage.setItem('signalcv_deepseek_key', deepseekKey)
     setSaved(true)
     setTimeout(() => setSaved(false), 2000)
   }
@@ -45,6 +51,28 @@ export default function SettingsPage() {
             value={anthropicKey}
             onChange={(e) => setAnthropicKey(e.target.value)}
             placeholder="sk-ant-..."
+            className="w-full h-10 px-3 rounded-md bg-bg-canvas border border-default focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary outline-none text-sm"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-sm font-medium">Gemini API Key</label>
+          <input
+            type="password"
+            value={geminiKey}
+            onChange={(e) => setGeminiKey(e.target.value)}
+            placeholder="AIza..."
+            className="w-full h-10 px-3 rounded-md bg-bg-canvas border border-default focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary outline-none text-sm"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-sm font-medium">DeepSeek API Key</label>
+          <input
+            type="password"
+            value={deepseekKey}
+            onChange={(e) => setDeepseekKey(e.target.value)}
+            placeholder="sk-..."
             className="w-full h-10 px-3 rounded-md bg-bg-canvas border border-default focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary outline-none text-sm"
           />
         </div>
