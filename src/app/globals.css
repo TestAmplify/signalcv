@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-inverse: var(--brand-inverse);
+  
+  --color-bg-canvas: var(--bg-canvas);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-surface-elevated: var(--bg-surface-elevated);
+  --color-bg-overlay: var(--bg-overlay);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-inverse: var(--text-inverse);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-pill: var(--radius-pill);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Base theme (Dark by default as per DESIGN.md) */
+:root {
+  --brand-primary: #F4F5F8;
+  --brand-inverse: #222326;
+
+  /* Dark theme values */
+  --bg-canvas: #0B0C0F;
+  --bg-surface: #101216;
+  --bg-surface-elevated: #141821;
+  --bg-overlay: rgba(0,0,0,0.55);
+
+  --border-subtle: rgba(255,255,255,0.08);
+  --border-default: rgba(255,255,255,0.12);
+  --border-strong: rgba(255,255,255,0.18);
+
+  --text-primary: #F4F5F8;
+  --text-secondary: rgba(244,245,248,0.72);
+  --text-muted: rgba(244,245,248,0.55);
+  --text-disabled: rgba(244,245,248,0.38);
+  --text-inverse: #222326;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 9999px;
+}
+
+/* Light theme overrides (if needed later, but keeping dark default for now) */
+@media (prefers-color-scheme: light) {
+  /* Commenting out light theme for now to enforce "Dark theme default" as per instructions, 
+     or we can enable it if the user wants system preference. 
+     DESIGN.md says "Dark theme default", so let's stick to dark for now unless explicitly requested. 
+     But let's add the variables just in case, commented out or active? 
+     Let's keep it dark-only for now to match "Linear-inspired" vibe.
+  */
+  /*
+  :root {
+    --bg-canvas: #FFFFFF;
+    --bg-surface: #F7F8FA;
+    --bg-surface-elevated: #FFFFFF;
+    --bg-overlay: rgba(0,0,0,0.18);
+
+    --border-subtle: rgba(34,35,38,0.08);
+    --border-default: rgba(34,35,38,0.12);
+    --border-strong: rgba(34,35,38,0.18);
+
+    --text-primary: #222326;
+    --text-secondary: rgba(34,35,38,0.72);
+    --text-muted: rgba(34,35,38,0.55);
+    --text-disabled: rgba(34,35,38,0.38);
+    --text-inverse: #F4F5F8;
+  }
+  */
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
